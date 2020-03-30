@@ -1,6 +1,6 @@
-## react-versiondisplay
+## Version Display
 
-This is where you include your WebPart documentation.
+This web part demonstrates how to include the version number inside your web parts.
 
 ### Building the code
 

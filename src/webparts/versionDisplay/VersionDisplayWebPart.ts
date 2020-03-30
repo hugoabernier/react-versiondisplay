@@ -11,18 +11,16 @@ import * as strings from 'VersionDisplayWebPartStrings';
 import VersionDisplay from './components/VersionDisplay';
 import { IVersionDisplayProps } from './components/IVersionDisplayProps';
 
-// Import the version number from the package solution
-//import * as packageSolution from "../../../config/package-solution.json";
-
+// Used to display version information
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
+
+import * as packageSolution from '../../../config/package-solution.json';
 
 export interface IVersionDisplayWebPartProps {
   description: string;
 }
 
-const config: any = require("../../../config/package-solution.json");
-
-export default class VersionDisplayWebPart extends BaseClientSideWebPart <IVersionDisplayWebPartProps> {
+export default class VersionDisplayWebPart extends BaseClientSideWebPart<IVersionDisplayWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IVersionDisplayProps> = React.createElement(
@@ -44,6 +42,9 @@ export default class VersionDisplayWebPart extends BaseClientSideWebPart <IVersi
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    // Import package version
+    const config: any = require("../../../config/package-solution.json");
+
     return {
       pages: [
         {
@@ -60,12 +61,16 @@ export default class VersionDisplayWebPart extends BaseClientSideWebPart <IVersi
               ]
             },
             {
-              groupName: "About",
+              groupName: strings.AboutGroupName,
               groupFields: [
                 PropertyPaneWebPartInformation({
-                description: `Version: ${config.solution.version}`,
-                key: 'webPartInfoId'
-              })
+                  description: strings.WebPartVersionLabel + config.solution.version,
+                  key: 'webPartInfoId'
+                }),
+                PropertyPaneWebPartInformation({
+                  description: strings.StaticImportVersionLabel + (<any>packageSolution).solution.version,
+                  key: 'webPartInfoStaticId'
+                })
               ]
             }
           ]
