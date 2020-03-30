@@ -3,8 +3,6 @@ declare interface IVersionDisplayWebPartStrings {
   WebPartVersionLabel: string;
   AboutGroupName: string;
   PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
 }
 
 declare module 'VersionDisplayWebPartStrings' {

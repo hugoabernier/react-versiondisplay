@@ -10,12 +10,10 @@ export default class VersionDisplay extends React.Component<IVersionDisplayProps
         <div className={ styles.container }>
           <div className={ styles.row }>
             <div className={ styles.column }>
-              <span className={ styles.title }>Welcome to SharePoint!</span>
-              <p className={ styles.subTitle }>Customize SharePoint experiences using Web Parts.</p>
-              <p className={ styles.description }>{escape(this.props.description)}</p>
-              <a href="https://aka.ms/spfx" className={ styles.button }>
-                <span className={ styles.label }>Learn more</span>
-              </a>
+              <span className={ styles.title }>Version Display</span>
+              <p className={ styles.subTitle }>This web part displays the solution version.</p>
+              <p className={ styles.description }>Version (using require): {escape(this.props.requireVersion)}</p>
+              <p className={ styles.description }>Version (using static import): {escape(this.props.staticImportVersion)}</p>
             </div>
           </div>
         </div>

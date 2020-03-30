@@ -14,6 +14,10 @@ import { IVersionDisplayProps } from './components/IVersionDisplayProps';
 // Used to display version information
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
+// Import package version
+const requirePackage: any = require("../../../config/package-solution.json");
+
+// Static import
 import * as packageSolution from '../../../config/package-solution.json';
 
 export interface IVersionDisplayWebPartProps {
@@ -26,7 +30,8 @@ export default class VersionDisplayWebPart extends BaseClientSideWebPart<IVersio
     const element: React.ReactElement<IVersionDisplayProps> = React.createElement(
       VersionDisplay,
       {
-        description: this.properties.description
+        requireVersion: requirePackage.solution.version,
+        staticImportVersion: (<any>packageSolution).solution.version
       }
     );
 
@@ -42,9 +47,6 @@ export default class VersionDisplayWebPart extends BaseClientSideWebPart<IVersio
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    // Import package version
-    const config: any = require("../../../config/package-solution.json");
-
     return {
       pages: [
         {
@@ -53,18 +55,10 @@ export default class VersionDisplayWebPart extends BaseClientSideWebPart<IVersio
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            },
-            {
               groupName: strings.AboutGroupName,
               groupFields: [
                 PropertyPaneWebPartInformation({
-                  description: strings.WebPartVersionLabel + config.solution.version,
+                  description: strings.WebPartVersionLabel + requirePackage.solution.version,
                   key: 'webPartInfoId'
                 }),
                 PropertyPaneWebPartInformation({

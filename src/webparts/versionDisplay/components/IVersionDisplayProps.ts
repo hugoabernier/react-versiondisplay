@@ -1,3 +1,4 @@
 export interface IVersionDisplayProps {
-  description: string;
+  requireVersion: string;
+  staticImportVersion: string;
 }
