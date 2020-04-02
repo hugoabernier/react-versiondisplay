@@ -58,6 +58,10 @@ export default class VersionDisplayWebPart extends BaseClientSideWebPart<IVersio
               groupName: strings.AboutGroupName,
               groupFields: [
                 PropertyPaneWebPartInformation({
+                  description: strings.ManifestVersionLabel + this.context.manifest.version,
+                  key: 'webPartInfoStaticId'
+                }),
+                PropertyPaneWebPartInformation({
                   description: strings.WebPartVersionLabel + requirePackage.solution.version,
                   key: 'webPartInfoId'
                 }),

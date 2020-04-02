@@ -1,5 +1,6 @@
 define([], function() {
   return {
+    ManifestVersionLabel: "Version (from manifest):",
     StaticImportVersionLabel: "Version (using static import): ",
     WebPartVersionLabel: "Version (using require): ",
     AboutGroupName: "About",
