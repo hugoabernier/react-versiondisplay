@@ -31,7 +31,8 @@ export default class VersionDisplayWebPart extends BaseClientSideWebPart<IVersio
       VersionDisplay,
       {
         requireVersion: requirePackage.solution.version,
-        staticImportVersion: (<any>packageSolution).solution.version
+        staticImportVersion: (<any>packageSolution).solution.version,
+        manifestVersion: this.context.manifest.version
       }
     );
 
